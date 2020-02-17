@@ -1,6 +1,6 @@
 .App{
   min-height: 100vh;
-  background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+  background-image: linear-gradient(-20deg, #e9defa 0%, #fbfcdb 100%);
 }
 
 .search-form{
@@ -62,5 +62,23 @@
 }
 
 .credit-photo {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
   color: black;
+}
+
+.card-view{
+  background-image: linear-gradient(to top, #feada6 0%, #f5efef 100%);
+  border: #e9defa solid 35px;
+  margin: 20px;
+  padding: 10px;
+  background-color: #FF0000;
+  height: 50vh;
+  text-align: center;
+  align-items: center;
+}
+
+.link {
+  color: white;
 }

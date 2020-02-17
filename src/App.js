@@ -4,6 +4,8 @@ import Recipe from './Recipe';
 
 import MainImg from './mainPage.jpg';
 
+import RecipeCard from './components/RecipeCard';
+
 const App = () => {
   const APP_ID = 'b6840015';
   const APP_KEY = '9114db96a774f8bfa1ec02f93c0c46c3';
@@ -11,16 +13,17 @@ const App = () => {
   const [recipes, setRepices] = useState([]);
   const [search, setSearch] = useState('');
   const [query, setQuery] = useState('chicken');
-  {/** 
-useEffect(() => {
+
+  useEffect(() => {
     getRecipes();
   }, [query]);
-*/}
+
 
 
   const getRecipes = async () => {
     const response = await fetch(`https://api.edamam.com/search?q=${query}&app_id=${APP_ID}&app_key=${APP_KEY}`);
     const data = await response.json();
+    console.log(data);
     setRepices(data.hits);
   };
 
@@ -41,10 +44,6 @@ useEffect(() => {
         <div className="title-container">
           <div class="title">la recette</div>
           <div className="sub-title">the best recipes for your day</div>
-          <form onSubmit={getSearch} className="search-form">
-            <input type="text" className="search-bar" value={search} onChange={e => updateSearch(e)} />
-            <button className="search-button" type="submit">Search</button>
-          </form>
         </div>
         <div className="credit-photo">Photo by Brooke Lark on Unsplash</div>
 
@@ -55,7 +54,7 @@ useEffect(() => {
       </form>
       <div className="recipes">
         {recipes.map(recipe => (
-          <Recipe key={recipe.recipe.label} title={recipe.recipe.label} calories={recipe.recipe.calories} image={recipe.recipe.image} ingredients={recipe.recipe.ingredients} />
+          <RecipeCard key={recipe.recipe.label} title={recipe.recipe.label} calories={recipe.recipe.calories} image={recipe.recipe.image} dietLabels={recipe.recipe.dietLabels} url={recipe.recipe.url} />
         ))}
       </div>
     </div>

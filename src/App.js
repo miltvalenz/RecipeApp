@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
-import Recipe from './Recipe';
 
 import MainImg from './mainPage.jpg';
 
@@ -17,8 +16,6 @@ const App = () => {
   useEffect(() => {
     getRecipes();
   }, [query]);
-
-
 
   const getRecipes = async () => {
     const response = await fetch(`https://api.edamam.com/search?q=${query}&app_id=${APP_ID}&app_key=${APP_KEY}`);
@@ -54,7 +51,8 @@ const App = () => {
       </form>
       <div className="recipes">
         {recipes.map(recipe => (
-          <RecipeCard key={recipe.recipe.label} title={recipe.recipe.label} calories={recipe.recipe.calories} image={recipe.recipe.image} dietLabels={recipe.recipe.dietLabels} url={recipe.recipe.url} />
+          <RecipeCard 
+            key={recipe.recipe.label} title={recipe.recipe.label} calories={recipe.recipe.calories} image={recipe.recipe.image} dietLabels={recipe.recipe.dietLabels} url={recipe.recipe.url} ingredients={recipe.recipe.ingredientLines}/>
         ))}
       </div>
     </div>
